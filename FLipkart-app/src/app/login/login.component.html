@@ -1,0 +1,67 @@
+<div class="d-flex justify-content-center">
+  <form
+    class="border border-info mt-4 p-5"
+    #loginform="ngForm"
+    (ngSubmit)="onSubmit(loginform)"
+  >
+    <div class="form-group">
+      <label class="font-weight-bold text-info" for="exampleInputEmail1"
+        >Email address</label
+      >
+      <input
+        #email="ngModel"
+        ngModel
+        required
+        name="email"
+        pattern="^([1-zA-Z0-1@.\s]{1,255})$"
+        type="email"
+        class="form-control w-20"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+      />
+      <small
+        *ngIf="email.errors?.required && email.touched"
+        id="emailHelp"
+        class="form-text text-muted"
+        >Email is mandatory</small
+      >
+      <small
+        *ngIf="email.errors?.pattern && email.touched"
+        id="emailHelp"
+        class="form-text text-muted"
+        >Email is invalid</small
+      >
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bold text-info" for="exampleInputPassword1"
+        >Password</label
+      >
+      <input
+        ngModel
+        required
+        name="password"
+        type="password"
+        class="form-control w-20"
+        id="exampleInputPassword1"
+      />
+    </div>
+    <div class="form-group form-check">
+      <input
+        type="checkbox"
+        #checkbox="ngModel"
+        ngModel
+        name="checkbox"
+        class="form-check-input"
+        id="exampleCheck1"
+      />
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      <label
+        *ngIf="checkbox.value && loginform.pristine"
+        class="form-check-label"
+        for="exampleCheck1"
+        >Required</label
+      >
+    </div>
+    <button type="Submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

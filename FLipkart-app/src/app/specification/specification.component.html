@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="m-5 col-sm-8" *ngFor="let product of specifications">
+    <ul class="list-group">
+      <li *ngFor="let spec of product.Specification" class="list-group-item">
+        {{ spec }}
+      </li>
+    </ul>
+  </div>
+</div>

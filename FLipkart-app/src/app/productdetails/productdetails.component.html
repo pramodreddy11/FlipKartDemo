@@ -1,0 +1,138 @@
+<div class="row m-5 p-5">
+  <div class="col-sm-3 border-right">
+    <strong>Filter</strong>
+  </div>
+  <div
+    class="col-sm-9"
+    *ngIf="filteredbrandphones.length > 0; else AllProducts"
+  >
+    <div
+      class="row border-bottom m-2 p-2"
+      *ngFor="let product of filteredbrandphones"
+    >
+      <div class="col-sm-2">
+        <img [src]="product.Imgurl" style="height: 200px;" />
+      </div>
+      <div class="col-sm-7">
+        <strong>{{ product.Productname }}</strong>
+        <ul class="p-2">
+          <li class="p-1" *ngFor="let spec of product.Specification">
+            {{ spec }}
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-3">
+        <strong class="d-block pl-3">₹{{ product.Price }}</strong>
+        <a
+          *ngIf="product.Instock; else outofstock"
+          class="btn btn-outline-success mt-2"
+          >Add to cart</a
+        >
+        <ng-template class="mt-2" #outofstock>
+          <p style="color: grey;" class="font-weight-bold">Out of Stock</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <ng-template #AllProducts>
+    <div
+      *ngIf="
+        specificproduct.length > 0;
+        then showSpecProducts;
+        else showAllProducts
+      "
+    ></div
+  ></ng-template>
+  <ng-template #showAllProducts>
+    <div class="col-sm-9">
+      <div class="row border-bottom m-2 p-2" *ngFor="let product of products">
+        <div class="col-sm-2">
+          <img [src]="product.Imgurl" style="height: 200px;" />
+        </div>
+        <div class="col-sm-7">
+          <strong
+            class="cursor-pointer"
+            (click)="getSpecificProductDetails(product)"
+            >{{ product.Productname }}</strong
+          >
+          <ul class="p-2">
+            <li class="p-1" *ngFor="let spec of product.Specification">
+              {{ spec }}
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-3" *ngIf="!product.toggleAddedButton">
+          <strong class="d-block pl-3">₹{{ product.Price }}</strong>
+          <a
+            (click)="getSelectedProduct(product)"
+            *ngIf="product.Instock; else outofstock"
+            class="btn btn-outline-success mt-2"
+            >Add to cart</a
+          >
+          <ng-template class="mt-2" #outofstock>
+            <p style="color: grey;" class="font-weight-bold">
+              Out of Stock
+            </p>
+          </ng-template>
+        </div>
+        <div class="col-sm-3" *ngIf="product.toggleAddedButton">
+          <p>Item Added</p>
+          <button class="btn btn-danger">Remove</button>
+        </div>
+      </div>
+    </div></ng-template
+  >
+
+  <ng-template #showSpecProducts>
+    <div class="col-sm-9">
+      <div class="row m-2 p-2" *ngFor="let product of specificproduct">
+        <div class="col-sm-2">
+          <img [src]="product.Imgurl" style="height: 200px;" />
+        </div>
+        <div class="col-sm-7">
+          <strong>{{ product.Productname }}</strong>
+          <ul class="p-2">
+            <li class="p-1" *ngFor="let spec of product.Specification">
+              {{ spec }}
+            </li>
+          </ul>
+        </div>
+        <div class="col-sm-3">
+          <strong class="d-block pl-3">₹{{ product.Price }}</strong>
+          <a
+            *ngIf="product.Instock; else outofstock"
+            class="btn btn-outline-success mt-2"
+            >Add to cart</a
+          >
+          <ng-template class="mt-2" #outofstock>
+            <p style="color: grey;" class="font-weight-bold">Out of Stock</p>
+          </ng-template>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+          <div class="p-2 m-1">
+            <button
+              class="btn btn-outline-primary"
+              (click)="specifications(product)"
+            >
+              Specification
+            </button>
+          </div>
+          <div class="p-2 m-1">
+            <button class="btn btn-outline-info" routerLink="BrandDetails">
+              Brand Details
+            </button>
+          </div>
+          <div class="p-2 m-1">
+            <button class="btn btn-outline-success" routerLink="Reviews&Rating">
+              Rating And Reviews
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

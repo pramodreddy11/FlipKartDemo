@@ -1,0 +1,121 @@
+<div class="container-fluid">
+  <div class="Container">
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-navcolor">
+      <a class="navbar-brand mr-auto mr-lg-0" href="#">
+        <img
+          style="width: 26px;"
+          src="https://pluspng.com/img-png/logo-flipkart-png-flipkart-logo-vector-300.png"
+        />
+        <img
+          class="pt-1 pl-1"
+          style="width: 90px;"
+          src="https://img1a.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_4ee2f9.png"
+        />
+      </a>
+      <button
+        class="navbar-toggler p-0 border-0"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <form class="form-inline my-2 my-lg-0 ml-5 d-none d-md-block d-lg-block">
+        <input
+          style="width: 500px; font-family: 'Times New Roman', Times, serif;"
+          class="form-control mr-sm-2"
+          type="text"
+          placeholder="Search for products, brands and more"
+          aria-label="Search"
+        />
+      </form>
+      <div class="navbar-collapse collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active p-2">
+            <a
+              class="nav-link"
+              style="color: whitesmoke; font-weight: 600;"
+              routerLink="/home"
+              >Home</a
+            >
+          </li>
+          <li class="nav-item p-2">
+            <a
+              class="nav-link"
+              style="color: whitesmoke; font-weight: 600;"
+              routerLink="/products"
+              >Products</a
+            >
+          </li>
+
+          <li class="nav-item dropdown p-2">
+            <a
+              style="color: whitesmoke; font-weight: 600;"
+              class="nav-link dropdown-toggle cursor-pointer"
+              id="dropdown01"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >Mobiles</a
+            >
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a
+                class="dropdown-item"
+                *ngFor="let brand of brands"
+                (click)="getSelectedItem(brand)"
+                >{{ brand }}</a
+              >
+            </div>
+          </li>
+          <li class="nav-item dropdown p-2">
+            <a
+              style="color: whitesmoke; font-weight: 600;"
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="dropdown01"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              >Heaters</a
+            >
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="#">Luminous</a>
+              <a class="dropdown-item" href="#">Amrane</a>
+            </div>
+          </li>
+          <li
+            class="nav-item p-2"
+            style="font-family: 'Times New Roman', Times, serif;"
+          >
+            <button class="btn btn-info" routerLink="/cart">
+              cart
+            </button>
+          </li>
+          <li
+            class="nav-item p-2"
+            style="font-family: 'Times New Roman', Times, serif;"
+          >
+            <button
+              class="btn btn-light"
+              style="color: cornflowerblue;"
+              routerLink="/login"
+            >
+              Login
+            </button>
+          </li>
+          <li
+            class="nav-item p-2"
+            style="font-family: 'Times New Roman', Times, serif;"
+          >
+            <button class="btn btn-info" routerLink="/signup">
+              Sign Up
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
